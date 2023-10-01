@@ -1,0 +1,48 @@
+button {
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+.bg-subtle-red {
+    background-color: #FEE2E2;
+}
+
+.text-red {
+    color: #DC2626;
+}
+
+.bg-subtle-green {
+    background-color: #DCFCE7;
+}
+
+.text-green {
+    color: #16A34A;
+}
+
+.bg-subtle-yellow {
+    background-color: #FEF9C3;
+}
+
+.text-yellow {
+    color: #CA8A04;
+}
+
+.text-orange {
+    color: #FB923C;
+}
+
+.text-gray-400 {
+    color: #A3A3A3;
+}
+
+.text-gray-600 {
+    color: #525252;
+}

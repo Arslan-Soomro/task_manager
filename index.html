@@ -27,7 +27,7 @@
       class="position-absolute align-items-center justify-content-center"
       id="add_task_modal"
     >
-      <div class="position-relative bg-white rounded-2 py-4 px-4">
+      <div class="position-relative bg-white rounded-2 py-4 px-4" style="min-width: 350px">
         <!-- Close Button -->
         <div class="position-absolute top-0 end-0 p-1 btn" onClick="document.getElementById('add_task_modal').style.display = 'none'">
           <svg
@@ -44,7 +44,7 @@
           </svg>
         </div>
         <h3 class="text-primary">Add a New Task</h3>
-        <form id="add_task_form">
+        <form id="add_task_form" class="d-flex flex-column gap-3 mt-3">
           <input
             name="task_title"
             class="form-control"

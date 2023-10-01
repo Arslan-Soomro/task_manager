@@ -1,12 +1,71 @@
+// Add event listeners on window load
+window.onload = function () {
+  const addTaskForm = document.querySelector("#add_task_form");
+  if (addTaskForm) {
+    addTaskForm.addEventListener("submit", handleAddTaskSubmit);
+  }
+};
+
+function getAddTaskFormData(form) {
+  const data = {
+    title: form.task_title?.value,
+    description: form.task_description?.value,
+    status: form.task_status?.value,
+    date: form.task_date?.value,
+    assignee: form.task_assignee?.value,
+  };
+
+  return data;
+}
+
+function handleAddTaskSubmit(event) {
+  event.preventDefault();
+  const form = document.querySelector("#add_task_form");
+  const data = getAddTaskFormData(form);
+
+  console.log(data);
+  addCardElement(data);
+
+  form.reset();
+  const modal = document.querySelector("#add_task_modal");
+  console.log(modal);
+  modal.style.display = "none";
+}
+
 let taskCards = [];
 
+function getStatusHtml(status) {
+  switch (status) {
+    case "todo":
+      return `        
+      <div class="px-3 py-0 bg-subtle-red rounded-pill">
+            <span class="text-red">Todo</span>
+      </div>`;
+    case "in_progress":
+      return `        
+      <div class="px-3 py-0 bg-subtle-yellow rounded-pill">
+       <span class="text-yellow">Todo</span>
+      </div>`;
+    case "done":
+      return `        
+      <div class="px-3 py-0 bg-subtle-green rounded-pill">
+       <span class="text-green">Todo</span>
+      </div>`;
+    default:
+      return `        
+      <div class="px-3 py-0 bg-subtle-red rounded-pill">
+       <span class="text-red">Todo</span>
+      </div>`;
+  }
+}
+
 function genereateCardHtml({ status, title, description, date, assignee }) {
+  const statusHtml = getStatusHtml(status);
+
   const html = `
       <!-- Task Card 1 Header -->
       <div class="d-flex justify-content-between align-items-center">
-        <div class="px-3 py-0 bg-subtle-red rounded-pill">
-          <span class="text-red">Todo</span>
-        </div>
+        ${statusHtml}
         <div class="d-flex align-items-center gap-3">
           <button type="button" class="text-primary">
             <!-- Edit Icon -->
@@ -76,20 +135,19 @@ function genereateCardHtml({ status, title, description, date, assignee }) {
       </div>
     `;
 
-    return html;
+  return html;
 }
 
 function addCardElement({ status, title, description, date, assignee }) {
-
   const container = document.querySelector("#cards_container");
 
-  if (container) {
+  if (!container) {
     console.log("[createCardElement] Cards Container Not Found in DOM.");
     return;
   }
 
   const card = document.createElement("div");
-  card.classList.add("d-flex flex-column border rounded-2 p-4 shadow");
+  card.className = "d-flex flex-column border rounded-2 p-4 shadow";
 
   card.innerHTML = genereateCardHtml({
     status,
@@ -100,11 +158,14 @@ function addCardElement({ status, title, description, date, assignee }) {
   });
 
   container.appendChild(card);
-  taskCards = [{
-    status,
-    title,
-    description,
-    date,
-    assignee,
-  }, ...taskCards];
+  taskCards = [
+    {
+      status,
+      title,
+      description,
+      date,
+      assignee,
+    },
+    ...taskCards,
+  ];
 }

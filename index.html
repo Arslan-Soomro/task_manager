@@ -15,7 +15,77 @@
     <title>Task Manager</title>
   </head>
   <body style="font-family: 'Outfit', sans-serif">
-    <div class="container">
+    <!-- Create Task Modal -->
+    <div
+      style="
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        display: none;
+      "
+      class="position-absolute align-items-center justify-content-center"
+      id="add_task_modal"
+    >
+      <div class="position-relative bg-white rounded-2 py-4 px-4">
+        <!-- Close Button -->
+        <div class="position-absolute top-0 end-0 p-1 btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-x"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+            />
+          </svg>
+        </div>
+        <h3 class="text-primary">Add a New Task</h3>
+        <form id="add_task_form">
+          <input
+            name="task_title"
+            class="form-control"
+            type="text"
+            placeholder="Title"
+          />
+          <textarea
+            class="form-control"
+            type="text"
+            placeholder="Description"
+            name="task_description"
+            style="resize: none"
+          ></textarea>
+          <select name="task_status" class="form-select">
+            <option value="todo">Todo</option>
+            <option value="in_progress">In Progress</option>
+            <option value="complete">Done</option>
+          </select>
+          <input
+            name="task_assignee"
+            class="form-control"
+            type="text"
+            placeholder="Assigned To"
+          />
+          <input
+            name="task_date"
+            class="form-control"
+            type="date"
+            placeholder="Due Date"
+          />
+          <button
+            type="submit"
+            style="width: 100%"
+            class="btn btn-primary"
+          >
+            Add Task
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="container position-relative">
       <!-- Navbar -->
       <nav class="px-2">
         <div
@@ -26,6 +96,7 @@
             <button
               type="button"
               class="btn btn-primary d-flex justify-content-center align-items-center gap-1"
+              onClick="document.getElementById('add_task_modal').style.display = 'flex'"
             >
               <!-- Plus Icon -->
               <svg

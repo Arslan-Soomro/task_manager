@@ -29,7 +29,7 @@
     >
       <div class="position-relative bg-white rounded-2 py-4 px-4">
         <!-- Close Button -->
-        <div class="position-absolute top-0 end-0 p-1 btn">
+        <div class="position-absolute top-0 end-0 p-1 btn" onClick="document.getElementById('add_task_modal').style.display = 'none'">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -142,8 +142,10 @@
               <span class="text-red">Todo</span>
             </div>
             <div class="d-flex align-items-center gap-3">
+              <!-- Edit Icon -->
+              <!--
               <button type="button" class="text-primary">
-                <!-- Edit Icon -->
+                
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -160,7 +162,9 @@
                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                   />
                 </svg>
+
               </button>
+              -->
               <button type="button" class="text-red">
                 <!-- Trash Icon -->
                 <svg
